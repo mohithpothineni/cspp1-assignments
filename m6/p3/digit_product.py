@@ -10,7 +10,7 @@ def main():
     '''
     int_input = int(input())
     prod_ = 1
-    num_= abs(int_input)
+    num_ = abs(int_input)
 
     while  num_ > 0:
         prod_ *= num_ % 10
