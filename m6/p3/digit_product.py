@@ -10,12 +10,17 @@ def main():
     '''
     int_input = int(input())
     prod_ = 1
+    num_= abs(int_input)
 
-
-    while int_input > 0:
-        prod_ *= int_input % 10
-        int_input //= 10
-    print(prod_)
+    while  num_ > 0:
+        prod_ *= num_ % 10
+        num_ //= 10
+    if int_input < 0:
+        print(-1 * prod_)
+    elif int_input == 0:
+        print(int_input)
+    else:
+        print(prod_)
 
 
 if __name__ == "__main__":
