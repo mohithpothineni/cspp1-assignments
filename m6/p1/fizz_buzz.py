@@ -11,13 +11,13 @@ def main():
     num_ = int(input())
     for i in range(1, num_ + 1):
         if i % 3 == 0 and i % 5 == 0:
-            print("FizzBuzz", end="")
+            print("FizzBuzz", end="\n")
         elif i % 3 == 0:
-            print("Fizz", end="")
+            print("Fizz", end="\n")
         elif i % 5 == 0:
-            print("Buzz", end="")
+            print("Buzz", end="\n")
         else:
-            print(i, end="")
+            print(i, end="\n")
 
 if __name__ == "__main__":
     main()
