@@ -9,14 +9,10 @@ def main():
     '''
     str_input = input()
     for i in str_input:
-        if ord(i) >= 97 and ord(i) <= 122:
-            print(i, end="")
-        elif ord(i) >= 65 and ord(i) <= 90:
-            print(i, end="")
-        elif ord(i) >= 48 and ord(i) <= 57:
+        if i not in ('!', '@', '#', '$', '%', '^', '&', '*'):
             print(i, end="")
         else:
-            print("", end=" ")
+            print(" ", end="")
 
 if __name__ == "__main__":
     main()
