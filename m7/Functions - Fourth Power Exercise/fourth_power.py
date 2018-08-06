@@ -22,7 +22,7 @@ def fourth_power(xx_):
     x: int or float.
     '''
     # Your code here
-    return square(xx_*xx_)
+    return square(square(xx_))
 
 def main():
     ''' gets user input and prints fourth raise '''
