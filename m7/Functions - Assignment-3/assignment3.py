@@ -17,7 +17,7 @@ def payingdebtoffinayear(balance, annualinterestrate):
         elif balance_copy < 0 and balance_copy < -1*epsilon_:
             maxx = payment_
         else:
-            return "Lowest Payment: "+ str(payment_)
+            return "Lowest Payment: "+ str(round(payment_, 2))
         payment_ = (minn+maxx)/2
 
 
