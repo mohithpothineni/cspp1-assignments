@@ -1,9 +1,9 @@
 ''' illustrates payment for scaling loan in a year using bisection'''
 def payingdebtoffinayear(balance, annualinterestrate):
     '''returns payment for scaling loan in a year using bisection'''
-    epsilon_ = 0.0001
+    epsilon_ = 0.01
     minn = balance / 12
-    maxx = balance * ((1+(0.2/12))**12)/12
+    maxx = balance * ((1+(annualinterestrate/12))**12)/12
     payment_ = (minn+maxx)/2
 
     while True:
