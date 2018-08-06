@@ -2,6 +2,8 @@
 
 def payingdebtoffinayear(balance, annualinterestrate):
     '''returns amount of monthly payment to clear debt in year  '''
+    if balance < 0:
+        return "Lowest Payment: "+str(0)
     payment_ = 10
     while True:
         balance_copy = balance
