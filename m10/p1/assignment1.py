@@ -12,7 +12,7 @@ def get_available_letters(letters_guessed):
     returns: string, comprised of letters that represents what letters have not
       yet been guessed.
     '''
-    return "".join([chr(i) for i in range(97, 123) if chr(i) not in letters_guessed])
+    return "".join([chr(i) for i in range(97, 123) if chr(i) not in letters_guessed.values()])
 
 
 
@@ -25,7 +25,7 @@ def main():
     data = []
     for char in user_input:
         data.append(char[0])
-    print(get_available_letters(data))
+    print(get_available_letters(dict(enumerate(data))))
 
 
 if __name__ == "__main__":
