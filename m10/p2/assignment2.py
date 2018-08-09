@@ -75,7 +75,7 @@ def hangman(secretWord):
     print("Welcome to the game, Hangman!")
     print("I am thinking of a word that is",len(secretWord),"letters long.")
     print("----------------------------------")
-    print("answer is",secretWord)
+    #print("answer is",secretWord)
     guess_count = 12
     user_guess = {}
     while True:
