@@ -14,6 +14,8 @@ that you've defined in the previous part.
 # (so be sure to read the docstrings!)
 
 import random
+from get_available_letters import get_available_letters
+from  get_guessed_word import get_guessed_word
 
 WORDLIST_FILENAME = "words.txt"
 
@@ -70,7 +72,37 @@ def hangman(secretWord):
     Follows the other limitations detailed in the problem write-up.
     '''
     # FILL IN YOUR CODE HERE...
-    pass
+    print("Welcome to the game, Hangman!")
+    print("I am thinking of a word that is",len(secretWord),"letters long.")
+    print("----------------------------------")
+    print("answer is",secretWord)
+    guess_count = 12
+    user_guess = {}
+    while True:
+        grammer_ = "gussess" if guess_count>1 else "guess"
+        print("you have",guess_count,grammer_,"left")
+        print("Available letters:",get_available_letters(user_guess))
+        new_guess = input("Please guess a letter: ")
+        new_guess = new_guess.lower()[0:1]
+        if ord(new_guess) in range(97,123) and new_guess not in user_guess:
+            guess_count -= 1
+            if new_guess in secretWord:
+                user_guess[new_guess]=1
+                print("Good guess:",get_guessed_word(secretWord,[i for i in user_guess]))
+            else:
+                print("Oops! That letter is not in my word:",get_guessed_word(secretWord,[i for i in user_guess]))
+        else:
+            print("Oops! You've already guessed that letter:",get_guessed_word(secretWord,[i for i in user_guess]))
+        print("--------------------------------------")
+        if get_guessed_word(secretWord,[i for i in user_guess]) == secretWord:
+            print("Congratulations, you won!")
+            break
+        if guess_count == 0:
+            print("Sorry, you ran out of guesses. The word was",secretWord)
+            break
+
+
+
 
 
 
@@ -79,11 +111,11 @@ def main():
     Main function for the given program
     
     When you've completed your hangman function, uncomment these two lines
-	and run this file to test! (hint: you might want to pick your own
-	secretWord while you're testing)
-	'''
-	# secretWord = chooseWord(wordlist).lower()
-	# hangman(secretWord)
+    and run this file to test! (hint: you might want to pick your own
+    secretWord while you're testing)
+    '''
+    secretWord = chooseWord(wordlist).lower()
+    hangman(secretWord)
 
 
 if __name__ == "__main__":
