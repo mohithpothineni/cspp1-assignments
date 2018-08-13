@@ -176,15 +176,12 @@ def isValidWord(word, hand, wordList):
     
     for i in word:
         if i not in hand:
-            return False    
-    for i in hand:
+            return False 
         if not(hand[i] >= word.count(i)):
             return False
     if word not in wordList:
         return False
     return True
-
-
 
 
 #
@@ -198,7 +195,7 @@ def calculateHandlen(hand):
     hand: dictionary (string-> int)
     returns: integer
     """
-    return sum([hand[i] for i in hand])   
+    return sum(hand.values())   
 
 
 
@@ -275,6 +272,7 @@ def playHand(hand, wordList, n):
                 wordScore = getWordScore(userInput,HAND_SIZE)
                 totalScore += wordScore
                 print("You've earned {}, your score now is {}".format(wordScore, totalScore))
+                print()
                 # Update the hand
                 hand = updateHand(hand, userInput)
     # Game is over (user entered a '.' or ran out of letters), so tell user the
@@ -286,7 +284,7 @@ def playHand(hand, wordList, n):
 # Problem #5: Playing a game
 # 
 
-hand_ = ""
+
 
 def playGame(wordList):
     """
@@ -300,7 +298,7 @@ def playGame(wordList):
  
     2) When done playing the hand, repeat from step 1    
     """
-    global hand_
+    hand_ = ""
 
     while True:
         usr_inp = input("enter n to play a hand\nenter r to play last hand again\nenter e to exit the game\n")
