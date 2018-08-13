@@ -128,18 +128,32 @@ def playGame(wordList):
     global hand_
 
     while True:
-        usr_inp = input("enter n to play a hand\nenter r to play last hand again\nenter e to exit the game\n")
+        usr_inp = input("enter 'n' to play a hand,'r' to play last hand again,'e' to exit the game: ")
         if usr_inp not in ('n', 'r', 'e'):
             print("invalid input")
         elif usr_inp == 'n':
             tmp_ = dealHand(random.randrange(6,10))
             hand_ = tmp_ 
-            compPlayHand(tmp_,wordList,len(tmp_))
+            usr_inp2 = input("Enter u to have yourself play, c to have the computer play: ")
+            if usr_inp2 == 'c':
+                compPlayHand(tmp_,wordList,len(tmp_))
+            elif usr_inp2 == 'u':
+                playHand(tmp_,wordList,len(tmp_))
+            else:
+                print("invalid option so computer is taking over")
+                compPlayHand(tmp_,wordList,len(tmp_))
         elif usr_inp == 'r':
             if hand_ == "":
                 print("no previous hand played")
             else:
-                compPlayHand(tmp_,wordList,len(tmp_))
+                usr_inp2 = input("Enter u to have yourself play, c to have the computer play: ")
+                if usr_inp2 == 'c':
+                    compPlayHand(tmp_,wordList,len(tmp_))
+                elif usr_inp2 == 'u':
+                    playHand(tmp_,wordList,len(tmp_))
+                else:
+                    print("invalid option so computer is taking over")
+                    compPlayHand(tmp_,wordList,len(tmp_))
         else:
             print("game exit!!!")
             break
