@@ -40,6 +40,8 @@ def is_straight(hand):
     if len(sort_face_str) != face_count:
         return False
     str_ = "".join([str(i) for i in numbers_])
+    if 'T' in sort_face_str:
+        str_ += 'T'
     if 'J' in sort_face_str:
         str_ += 'J'
     if 'Q' in sort_face_str:
@@ -48,7 +50,7 @@ def is_straight(hand):
         str_ += 'K'
     if 'A' in sort_face_str:
         str_ += 'A'
-    if str_ in ('A2345', '10JQKA', '910JQK', '8910JQ', '78910J'):
+    if str_ in ('A2345', 'TJQKA', '9TJQK', '89TJQ', '789TJ'):
         return True
     return False
 
