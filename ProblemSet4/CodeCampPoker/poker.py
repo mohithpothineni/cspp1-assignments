@@ -6,29 +6,23 @@
 
 def is_fourofakind(hand):
     ''' returns true if hand is 4 of a kind else false'''
-    if len(set(i[0] for i in hand)) == 2:
-        return True
-    return False
+    return len(set(i[0] for i in hand)) == 2
 
 def is_threeofakind(hand):
     ''' returns true if hand is 3 of a kind else false'''
     hand_copy = [i[0] for i in hand]
-    if any([True if hand_copy.count(i) == 3 else False for i in hand_copy]):
-        return True
-    return False
+    return any([True if hand_copy.count(i) == 3 else False for i in hand_copy])
+
 
 def is_onepair(hand):
     ''' returns true if hand is one pair else false'''
     hand_copy = [i[0] for i in hand]
-    if any([True if hand_copy.count(i) == 2 else False for i in hand_copy]):
-        return True
-    return False
+    return any([True if hand_copy.count(i) == 2 else False for i in hand_copy])
 
 def is_twopair(hand):
     """ returns true if the hand is two pair else false"""
-    if len(set(i[0] for i in hand)) == 3:
-        return True
-    return False
+    return len(set(i[0] for i in hand)) == 3
+
 
 
 def is_straight(hand):
