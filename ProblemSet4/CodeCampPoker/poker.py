@@ -4,6 +4,33 @@
     https://en.wikipedia.org/wiki/List_of_poker_hands
 '''
 
+def is_fourofakind(hand):
+    ''' returns true if hand is 4 of a kind else false'''
+    if len(set(i[0] for i in hand)) == 2:
+        return True
+    return False
+
+def is_threeofakind(hand):
+    ''' returns true if hand is 3 of a kind else false'''
+    hand_copy = [i[0] for i in hand]
+    if any([True if hand_copy.count(i) == 3 else False for i in hand_copy]):
+        return True
+    return False
+
+def is_onepair(hand):
+    ''' returns true if hand is one pair else false'''
+    hand_copy = [i[0] for i in hand]
+    if any([True if hand_copy.count(i) == 2 else False for i in hand_copy]):
+        return True
+    return False
+
+def is_twopair(hand):
+    """ returns true if the hand is two pair else false"""
+    if len(set(i[0] for i in hand)) == 3:
+        return True
+    return False
+
+
 def is_straight(hand):
     '''
         How do we find out if the given hand is a straight?
@@ -69,14 +96,17 @@ def hand_rank(hand):
     # third would be a straight with the return value 1
     # any other hand would be the fourth best with the return value 0
     # max in poker function uses these return values to select the best hand
-    straight_ = is_straight(hand)
-    flush_ = is_flush(hand)
-    if straight_ and flush_:
-        return 3
-    if  flush_:
-        return 2
-    if straight_:
-        return 1
+
+    funcs = ['', is_onepair, is_twopair, is_threeofakind, is_straight, is_flush, \
+            [is_threeofakind, is_onepair], is_fourofakind, [is_straight, is_flush]]
+
+    for i in range(8, 0, -1):
+        if not isinstance(funcs[i], list):
+            if funcs[i](hand):
+                return i
+        else:
+            if funcs[i][0](hand) and funcs[i][1](hand):
+                return i
     return 0
 
 def poker(hands):
