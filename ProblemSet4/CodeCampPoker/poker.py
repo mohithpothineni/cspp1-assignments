@@ -14,43 +14,19 @@ def is_straight(hand):
         Think of an algorithm: given the card face value how to check if it a straight
         Write the code for it and return True if it is a straight else return False
     '''
-    face_str = ""
-    sort_face_str = ""
-    face_flag = False
-    numbers_ = []
-    face_count = 0
+    nos_ = []
+    fc_ = ('T', 'J', 'Q', 'K', 'A')
+    num_ = None
     for i in hand:
         try:
-            num_ = int(i[:-1])
-            numbers_.append(num_)
+            num_ = int(i[0])
         except ValueError:
-            face_flag = True
-            face_str += i[:-1]
-            face_count += 1
-    numbers_.sort()
-    if not face_flag:
-        tmp_sum1 = sum(numbers_)
-        tmp_sum2 = sum(range(min(numbers_), max(numbers_)+1))
-        if tmp_sum1 == tmp_sum2:
-            return True
-        return False
-    for i in face_str:
-        if i not in sort_face_str:
-            sort_face_str += i
-    if len(sort_face_str) != face_count:
-        return False
-    str_ = "".join([str(i) for i in numbers_])
-    if 'T' in sort_face_str:
-        str_ += 'T'
-    if 'J' in sort_face_str:
-        str_ += 'J'
-    if 'Q' in sort_face_str:
-        str_ += 'Q'
-    if 'K' in sort_face_str:
-        str_ += 'K'
-    if 'A' in sort_face_str:
-        str_ += 'A'
-    if str_ in ('A2345', 'TJQKA', '9TJQK', '89TJQ', '789TJ'):
+            num_ = 13 + fc_.index(i[0])
+        finally:
+            nos_.append(num_)
+    if all([True if i[0] in 'A234' else False for i in hand]):
+        return True
+    if len(set(nos_)) == 5 and max(nos_) - min(nos_) == 4:
         return True
     return False
 
