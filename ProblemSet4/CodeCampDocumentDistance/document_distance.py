@@ -22,7 +22,9 @@ def similarity(dict1, dict2):
     stop_words = load_stopwords("stopwords.txt")
     cleaned_one = [i for i in cleaned_one if i not in stop_words]
     cleaned_two = [i for i in cleaned_two if i not in stop_words]
-
+    
+    print(len(cleaned_one))
+    print(len(cleaned_two))
     freq_dict = {val:[cleaned_one.count(val), cleaned_two.count(val)]\
                 for i, val in enumerate(cleaned_one) if i == cleaned_one.index(val)}
 
