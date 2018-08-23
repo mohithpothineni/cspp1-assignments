@@ -16,7 +16,7 @@ def mult_matrix(m1_, m2_):
     m2__c_len = len(m2_[0])
 
     if m1__c_len != m2__r_len:
-        print("Error: Matrix shapes invalid for multNone")
+        print("Error: Matrix shapes invalid for mult\nNone")
         return None
     res = []
 
@@ -53,7 +53,7 @@ def add_matrix(m1_, m2_):
     m2__c_len = len(m2_[0])
 
     if m1__r_len != m2__r_len or m1__c_len != m2__c_len:
-        print("Error: Matrix shapes invalid for additionNone")
+        print("Error: Matrix shapes invalid for addition\nNone")
         return None
 
     res = []
